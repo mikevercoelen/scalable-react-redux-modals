@@ -22,9 +22,9 @@ const Content = styled.div`
   z-index: 10000;
   overflow: auto;
   text-align: center;
-  cursor: pointer;
   overflow-scrolling: touch;
   padding: 4px;
+  cursor: pointer;
 
   &:after {
     vertical-align: middle;
@@ -44,6 +44,7 @@ const Dialog = styled.div`
   vertical-align: middle;
   box-sizing: border-box;
   max-width: 520px;
+  cursor: default;
 `;
 
 const Header = styled.div`
@@ -97,12 +98,20 @@ export default class Modal extends Component {
     ) : null;
   }
 
+  onOverlayClick = () => {
+    this.props.onClose();
+  };
+
+  onDialogClick = (event) => {
+    event.stopPropagation();
+  };
+
   render () {
     return (
       <div className='modal'>
         <Overlay />
-        <Content>
-          <Dialog>
+        <Content onClick={this.onOverlayClick}>
+          <Dialog onClick={this.onDialogClick}>
             <Header>
               {this.title}
               {this.close}
