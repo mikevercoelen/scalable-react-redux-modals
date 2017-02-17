@@ -6,8 +6,8 @@ import Modal from '../../components/Modal';
 
 const Confirmation = ({ title, onConfirm, hideModal }) => {
   const handleConfirm = (isConfirmed) => () => {
-    onConfirm(isConfirmed);
     hideModal();
+    onConfirm(isConfirmed);
   };
 
   return (

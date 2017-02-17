@@ -8,8 +8,6 @@ const initialState = {
 function modalReducer (state = initialState, action) {
   switch (action.type) {
     case SHOW_MODAL:
-      console.log(action);
-
       return {
         ...state,
         type: action.payload.type,
